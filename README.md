@@ -8,6 +8,7 @@ covering **Data Engineering**, **Data Analysis**, and **Data Science** component
 
 ## 📂 Project Structure
 
+```
 data/
 ├── raw/ # original survey or feedback files
 ├── interim/ # cleaned but not yet finalized
@@ -31,6 +32,7 @@ dashboard/
 docs/
 ├── data_dictionary.md
 └── ethics_disclaimer.md
+```
 
 ---
 
@@ -77,4 +79,4 @@ No personally identifiable information (PII) is included.
 ## 👨‍💻 Author
 **Thanayot Chalernpornlert**  
 Computer Engineering Student @ Chulalongkorn University  
-📧 *[your.email@example.com]* | 🌐 [github.com/yourusername](https://github.com/yourusername)
+📧 *[thanayot.47@gmail.com]* | 🌐 [github.com/besttny]
