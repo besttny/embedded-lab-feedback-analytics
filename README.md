@@ -1,11 +1,13 @@
-# Embedded Lab Feedback Analytics
+# 🧩 Embedded Lab Feedback Analytics
 
-A mini data project analyzing student feedback from the Embedded Systems Laboratory course.
-This project demonstrates the complete data pipeline from **ETL** to **analysis** and **visualization**, with components from **Data Engineering**, **Data Analysis**, and **Data Science**.
+A mini data project analyzing student feedback from the **Embedded Systems Laboratory** course.  
+This project demonstrates the complete data pipeline from **ETL** to **analysis** and **visualization**,  
+covering **Data Engineering**, **Data Analysis**, and **Data Science** components.
 
 ---
 
 ## 📂 Project Structure
+
 data/
 ├── raw/ # original survey or feedback files
 ├── interim/ # cleaned but not yet finalized
@@ -33,34 +35,35 @@ docs/
 ---
 
 ## 🎯 Project Objectives
-- Build an ETL pipeline to clean and load feedback data into a SQL database.
-- Perform exploratory data analysis (EDA) to find trends and correlations.
-- Visualize results through an interactive dashboard.
-- Apply simple sentiment or regression models for further insights.
+- Build an ETL pipeline to clean and load feedback data into a SQL database.  
+- Perform exploratory data analysis (EDA) to find trends and correlations.  
+- Visualize results through an interactive dashboard.  
+- *(Optional)* Apply sentiment or feature importance analysis for deeper insights.
 
 ---
 
 ## 🧰 Tech Stack
-- **Python** (pandas, matplotlib, seaborn, plotly, scikit-learn)
-- **SQL** (PostgreSQL)
-- **Streamlit** or **Plotly Dash** for visualization
-- **GitHub** for version control and portfolio presentation
+- **Python** → pandas, matplotlib, seaborn, plotly, scikit-learn  
+- **SQL** → PostgreSQL  
+- **Visualization** → Streamlit / Plotly Dash  
+- **Version Control** → GitHub  
 
 ---
 
-## ⚙️ Workflow Timeline
-| Phase | Description | Output |
-|:--|:--|:--|
-| Day 1–2 | Data Cleaning & Anonymization | `feedback_clean.csv` |
-| Day 3 | Database Setup & ETL | `schema.sql`, loaded DB |
-| Day 4–5 | EDA & Visualization | graphs, insights |
-| Day 6 | Dashboard Development | Streamlit app |
-| Day 7 | Modeling (optional) & Final Report | regression/sentiment results |
+## 🗓️ Timeline (MVP)
+| Day | Task | Output |
+|:--:|:--|:--|
+| 1–2 | Cleaning & anonymization | `data/processed/feedback_clean.csv` |
+| 3 | DB schema & ETL | PostgreSQL database |
+| 4–5 | EDA & key visualizations | insights + graphs |
+| 6 | Streamlit dashboard | interactive web app |
+| 7 | *(Optional)* sentiment / feature importance | analytical report |
 
 ---
 
 ## 🛡️ Data Ethics
-This dataset has been **anonymized** and is used **solely for educational and portfolio purposes**.
+This dataset has been **fully anonymized** and is used **solely for educational and portfolio purposes**.  
+No personally identifiable information (PII) is included.
 
 ---
 
@@ -72,5 +75,6 @@ This dataset has been **anonymized** and is used **solely for educational and po
 ---
 
 ## 👨‍💻 Author
-Thanayot Chalernpornlert  
+**Thanayot Chalernpornlert**  
 Computer Engineering Student @ Chulalongkorn University  
+📧 *[your.email@example.com]* | 🌐 [github.com/yourusername](https://github.com/yourusername)
