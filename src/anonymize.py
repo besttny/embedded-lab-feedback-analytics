@@ -9,20 +9,47 @@ OUT_FILE = OUT_DIR / "feedback_clean.csv"
 
 REQUIRED_COLS = ["section", "comment", "lab_no", "category"]
 
-SENSITIVE_PATTERNS = [
-    r"(อ\.|อาจารย์)\s+(?!ไม่|ควร|พูด|ดุ|สอน|ยัง|ขาด|สอนน้อย|เข้ม|ใจดี|ใจร้าย|เลย|โอ|โอเค)[ก-๙A-Za-z]{2,}",
-    r"[A-Za-zก-๙]+(?:\s+[A-Za-zก-๙]+){0,2}\s*(?:สอนไม่ดี|พูดเร็ว|ดุ)",
-    r"\b66\d{8}\b",
-    r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}",
+TEACHER_PATTERNS = [
+    r"อ\.?\s*แยม",
+    r"อาจารย์\s*แยม",
+    r"อ\.?\s*พิชญะ",
+    r"อาจารย์\s*พิชญะ",
+    r"อ\.?\s*สุขุม",
+    r"อาจารย์\s*สุขุม",
 ]
 
+TA_PATTERNS = [
+    r"TA\s*เดช",
+    r"TA\s*นิค",
+    r"T[Aa]\s*Dech",
+    r"T[Aa]\s*Nick",
+    r"พี่\s*เดช",
+    r"พี่\s*นิค",
+    r"\bเดช\b",
+    r"\bนิค\b",
+    r"\bNick\b",
+    r"\bDech\b",
+]
+
+
 def sanitize_comment(text: str) -> str:
+    """แทนชื่อจริงของอาจารย์และ TA ด้วย [REDACTED_TEACHER] / [REDACTED_TA]"""
     if not isinstance(text, str):
         return ""
     t = text.strip()
-    for pat in SENSITIVE_PATTERNS:
-        t = re.sub(pat, "[REDACTED]", t, flags=re.IGNORECASE)
-    return re.sub(r"\s+", " ", t)
+    for pat in TEACHER_PATTERNS:
+        t = re.sub(pat, "[REDACTED_TEACHER]", t, flags=re.IGNORECASE)
+    for pat in TA_PATTERNS:
+        t = re.sub(pat, "[REDACTED_TA]", t, flags=re.IGNORECASE)
+    return re.sub(r"\s+", " ", t).strip()
+
+def replace_redacted(text: str) -> str:
+    """แทน [REDACTED_*] ด้วย <Teacher> หรือ <TA>"""
+    if pd.isna(text):
+        return text
+    text = re.sub(r"\[REDACTED_TEACHER\]", "<Teacher>", text)
+    text = re.sub(r"\[REDACTED_TA\]", "<TA>", text)
+    return text
 
 def normalize_section(val: str) -> str:
     if not isinstance(val, str):
@@ -32,6 +59,12 @@ def normalize_section(val: str) -> str:
         return "Timing"
     if "doc" in v:
         return "Document"
+    if "ta" in v or "teach" in v:
+        return "TA/Teacher"
+    if "hard" in v or "equip" in v or "board" in v:
+        return "Hardware"
+    if "oth" in v:
+        return "Other"
     return "Other"
 
 def normalize_category(val: str) -> str:
@@ -68,15 +101,6 @@ def to_str_or_none(x):
     if pd.isna(x) or str(x).strip() == "":
         return None
     return str(x).strip()
-
-def replace_redacted(text):
-    if pd.isna(text):
-        return text
-    # <TA>
-    text = re.sub(r"\[REDACTED\]\s*([Tt][Aa]|ทีเอ)", "<TA>", text)
-    # <Teacher>
-    text = re.sub(r"\[REDACTED\]\s*[้\s]*(สอน|อาจารย์|teacher)", "<Teacher>", text)
-    return text
 
 def main():
     if not RAW_FILE.exists():
