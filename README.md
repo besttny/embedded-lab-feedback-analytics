@@ -62,7 +62,7 @@ docs/
 ---
 
 ## 🗓️ Timeline (MVP)
-| Day | Task | Output |
+| Day | Phase | เป้าหมายหลัก | ผลลัพธ์ที่ได้ |
 |:--:|:--|:--|:--|
 | **Day 0** | 🔧 Setup & Planning | สร้าง repo, README, ethics disclaimer, โครงสร้าง project | โครงสร้าง repo พร้อมใช้งาน |
 | **Day 1** | 🧹 Data Extraction & Cleaning | แปลง feedback PDF → CSV และ clean ข้อความ | `feedback_raw.csv` |
@@ -71,7 +71,7 @@ docs/
 | **Day 4** | 🧠 Sentiment & Advanced Analytics | วิเคราะห์ อารมณ์ (pos / neu / neg) + Word Cloud และ Top Keywords | `feedback_sentiment.csv` + กราฟ เชิงลึก |
 | **Day 5** | 📈 Dashboard Development | สร้าง Streamlit dashboard พร้อม filter และ กราฟ interactive | `dashboard/app.py` |
 | **Day 6** | 🎨 Storytelling & Insight Design | ปรับ layout, สรุป key insights, เตรียม presentation | Final graphs + storyboard |
-| **Day 7** | 🚀 Final Report & Portfolio Prep | เขียน README สรุปผล  | Repo พร้อม showcase ใน GitHub / Resume |
+| **Day 7** | 🚀 Final Report & Portfolio Prep | เขียน README สรุปผล และ เตรียม portfolio | Repo พร้อม showcase ใน GitHub / Resume |
 
 ---
 
