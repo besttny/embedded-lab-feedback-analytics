@@ -6,11 +6,11 @@ from pathlib import Path
 
 load_dotenv()
 
-PG_HOST = os.getenv("PG_HOST", "localhost")
-PG_PORT = os.getenv("PG_PORT", "5432")
-PG_USER = os.getenv("PG_USER", "postgres")
-PG_PASSWORD = os.getenv("PG_PASSWORD", "")
-PG_DATABASE = os.getenv("PG_DATABASE", "feedbackdb")
+PG_HOST = os.getenv("POSTGRES_HOST", "localhost")
+PG_PORT = os.getenv("POSTGRES_PORT", "5433")
+PG_USER = os.getenv("POSTGRES_USER", "postgres")
+PG_PASSWORD = os.getenv("POSTGRES_PASSWORD", "postgres123")
+PG_DATABASE = os.getenv("POSTGRES_DATABASE", "feedbackdb")
 
 CSV_PATH = Path("data/processed/feedback_clean.csv")
 SCHEMA_PATH = Path("db/schema.sql")
