@@ -97,10 +97,12 @@ This dataset has been **fully anonymized** and is used **solely for educational 
 
 ## 📊 Day 6 Summary — Advanced Analytics & Insights
 
-### 🧠 Sentiment Analysis (Rule-Based)
-- บวก ≈ 25–30 %  |  ลบ ≈ 10–15 %  |  ส่วนใหญ่ = กลาง  
-- Keywords บวก: “เข้าใจ”, “ขอบคุณ”, “ดี”, “เยี่ยม”  
-- Keywords ลบ: “ไม่เข้าใจ”, “ยาก”, “เสียเวลา”, “น้อย”  
+### 🧠 Sentiment Analysis (Rule-Based)  
+- 39% Neutral  
+- 35% Negative  
+- 26% Positive  
+- Keywords บวก: “เข้าใจ”, “ชอบ”, “ขอบคุณ”, “เยี่ยม” 
+- Keywords ลบ: “ไม่เข้าใจ”, “ยาก”, “เสียเวลา”, “งง”  
 
 📈 **Sentiment Distribution by Section**
 ![sentiment_by_section](./assets/sentimentdistribution.png)
@@ -108,11 +110,13 @@ This dataset has been **fully anonymized** and is used **solely for educational 
 ---
 
 ### 🌤️ Average Sentiment Score by Section
-| Section | Avg Score | ความคิดเห็น |
+| Section | Avg Sentiment | ความเห็นสรุป |
 |:--|:--:|:--|
-| TA / Teacher | สูงสุด | คำชมเรื่องอธิบายดี |
-| Hardware | ปานกลาง | บ่นของไม่พอ |
-| Document | ต่ำสุด | “เข้าใจยาก” |
+| **TA / Teacher** | ~0.0 | มีคำชมว่า “ช่วยดี / อธิบายเข้าใจ” |
+| **Hardware** | ~-0.15 | มีทั้งบวกและลบ เช่น “อุปกรณ์ไม่พอ” |
+| **Document** | ~-0.20 | “เอกสารไม่ละเอียด เข้าใจยาก” |
+| **Timing** | ~-0.4 | “เวลาไม่พอ / ทันน้อย” |
+| **Other** | ~-0.45 | รวม feedback ทั่วไป เช่น lab หนัก / ยาก |
 
 📊 **Average Sentiment Score by Section**
 ![sentiment_avg_section](./assets/avgsentimentscorebysection.png)
@@ -120,7 +124,7 @@ This dataset has been **fully anonymized** and is used **solely for educational 
 ---
 
 ### ☁️ Word Cloud & Top Words
-**คำยอดนิยม:** “เวลา”, “เข้าใจ”, “ยาก”, “TA”, “Doc”, “ขอบคุณ”  
+**คำยอดนิยม:** “ไม่”, “ยาก”, “TA”, “ทำให้”, “เวลา”, “เข้าใจ”, “ดี”, “ขอบคุณ”
 
 🌥️ **Word Cloud**
 ![wordcloud](./assets/wordcloud.png)
@@ -131,10 +135,11 @@ This dataset has been **fully anonymized** and is used **solely for educational 
 ---
 
 ### 🧩 Key Insights
-- ⏱️ **Timing** พูดถึงบ่อย และ มักเป็น sentiment ลบ  
-- 📄 **Document** ควร เพิ่ม ความละเอียด ชัดเจน  
-- 🙋‍♂️ **TA** ส่วนใหญ่ feedback บวก  
-- 🔌 **Hardware** กลาง-บวก แต่ มี ข้อจำกัด ด้านอุปกรณ์  
+- ⏱️ **Timing** → พูดถึงมากสุด และมักเป็น feedback เชิงลบ (“เวลาไม่พอ”)  
+- 📄 **Document** → คะแนนต่ำสุด ต้องปรับปรุงความละเอียด  
+- 🙋‍♂️ **TA** → ได้รับ feedback เชิงบวกต่อความช่วยเหลือและคำอธิบาย  
+- 🔌 **Hardware** → กลางถึงบวก แต่มีข้อจำกัดเรื่องจำนวนอุปกรณ์  
+- 💡 **ภาพรวม**: นักศึกษาส่วนใหญ่เข้าใจเนื้อหา แต่ติดปัญหาเวลาและเอกสารประกอบ  
 
 ---
 
