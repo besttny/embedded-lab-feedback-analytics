@@ -1,16 +1,22 @@
 # 🧩 Embedded Lab Feedback Analytics
 
 A mini data project analyzing student feedback from the **Embedded Systems Laboratory** course at Chulalongkorn University.  
-This project demonstrates the full data pipeline from **data extraction, anonymization, and ETL**, through **analysis** and **visualization**,  
-covering **Data Engineering**, **Data Analysis**, and **Data Science** components.
+This project demonstrates a complete workflow from **data extraction, anonymization, and ETL**, through **analysis** and **visualization**,  
+covering **Data Engineering** and **Data Analytics** components.
 
 ---
 
 ## 📂 Project Structure
 
 ```
+
+assets/                  # picture assets
+├── dashboard.JPG                 
+├── sentiment_bar.JPG           
+└── wordcloud.png        
+
 data/
-├── raw/                 # original survey or feedback files
+├── raw/                # original survey or feedback files
 ├── interim/             # cleaned but not yet finalized
 └── processed/           # ready-to-analyze datasets
 
@@ -40,10 +46,10 @@ docs/
 
 ## 🎯 Project Objectives
 - Build a reproducible **ETL pipeline** to clean and load feedback data into PostgreSQL  
-- Perform **exploratory data analysis (EDA)** to uncover trends and patterns  
-- Conduct **sentiment analysis** on open-ended comments (Thai + English)  
-- Visualize insights interactively via a **Streamlit dashboard**  
-- Apply data ethics and anonymization best practices  
+- Perform **exploratory data analysis (EDA)** to uncover trends and feedback patterns  
+- Conduct **rule-based sentiment analysis** on Thai comments  
+- Visualize findings interactively through a **Streamlit dashboard**  
+- Apply **data ethics and anonymization** best practices  
 
 ---
 
@@ -54,9 +60,9 @@ docs/
 | **Data Handling** | pandas, numpy, re |
 | **Visualization** | matplotlib, seaborn, wordcloud |
 | **Database** | PostgreSQL + SQLAlchemy |
-| **Text Analysis** | PyThaiNLP *(or simple keyword-based sentiment)* |
-| **App / Dashboard** | Streamlit / Plotly Dash |
-| **Env Management** | dotenv (.env) |
+| **Text Analysis** | PyThaiNLP *(rule-based sentiment)* |
+| **App / Dashboard** | Streamlit, Plotly Dash |
+| **Env Management** | python-dotenv (.env) |
 | **Version Control** | Git + GitHub |
 
 ---
@@ -89,50 +95,67 @@ docs/
 
 ### 🧠 Sentiment Analysis (Rule-Based)
 ใช้ชุดคำเชิงบวกและลบในการจำแนกอารมณ์ของ feedback  
-บวก → “เข้าใจ”, “ชอบ”, “ขอบคุณ”, “เยี่ยม”  
-ลบ → “ไม่เข้าใจ”, “ยาก”, “เสียเวลา”, “งง”  
+- บวก → “เข้าใจ”, “ชอบ”, “ขอบคุณ”, “เยี่ยม”  
+- ลบ → “ไม่เข้าใจ”, “ยาก”, “เสียเวลา”, “งง”  
 
-- ส่วนใหญ่ ≈ Neutral  
-- ~25–30 % Positive  
-- ~10–15 % Negative  
+📈 **ผลลัพธ์รวม:**  
+- 39% Neutral  
+- 35% Negative  
+- 26% Positive  
+
+→ Feedback ส่วนใหญ่ค่อนข้าง “กลางถึงลบ” โดยเฉพาะหัวข้อ **Timing** และ **Document**
 
 ---
 
 ### 🌤️ Average Sentiment Score by Section
-| Section | Avg Score | ความเห็น |
+| Section | Avg Sentiment | ความเห็นสรุป |
 |:--|:--:|:--|
-| **TA / Teacher** | สูงสุด | “TA อธิบายดี ช่วยเร็ว” |
-| **Hardware** | ปานกลาง | มีทั้งคำชม และ บ่นว่า “ของไม่พอ” |
-| **Document** | ต่ำสุด | “เอกสารไม่ละเอียด เข้าใจยาก” |
+| **TA / Teacher** | ~0.0 | มีคำชมว่า “ช่วยดี / อธิบายเข้าใจ” |
+| **Hardware** | ~-0.15 | มีทั้งบวกและลบ เช่น “อุปกรณ์ไม่พอ” |
+| **Document** | ~-0.20 | “เอกสารไม่ละเอียด เข้าใจยาก” |
+| **Timing** | ~-0.4 | “เวลาไม่พอ / ทันน้อย” |
+| **Other** | ~-0.45 | รวม feedback ทั่วไป เช่น lab หนัก / ยาก |
 
 ---
 
-### ☁️ Word Cloud Visualization
-**คำยอดนิยม:** “เวลา”, “เข้าใจ”, “ยาก”, “TA”, “Doc”, “ขอบคุณ”, “อุปกรณ์”  
-💬 Feedback เน้นเรื่อง เวลา ความเข้าใจ เอกสาร และ TA  
+### ☁️ Word Cloud Highlights
+คำหลักที่พบมากสุด:
+> “ไม่”, “ยาก”, “TA”, “ทำให้”, “เวลา”, “เข้าใจ”, “ดี”, “ขอบคุณ”
+
+💬 Keyword หลักสะท้อน 3 theme สำคัญ:
+- **เวลา** → คำบ่นหลัก เช่น “ไม่ทัน”, “เวลาน้อย”  
+- **เอกสาร / Doc** → เรื่องความชัดเจน  
+- **TA / ผู้ช่วยสอน** → ได้รับคำชมเชิงบวก
 
 ---
 
 ### 🔤 Top 15 Frequent Words
-- บวก: “เข้าใจ”, “ขอบคุณ”, “ดี”, “เยี่ยม”  
-- ลบ: “ไม่เข้าใจ”, “ยาก”, “เสียเวลา”, “น้อย”  
+
+คำที่เจอบ่อยสุดในทุก feedback:
+| Rank | Word | หมายเหตุ |
+|:--:|:--|:--|
+| 1 | ไม่ | พบมากใน “ไม่เข้าใจ”, “ไม่ทัน”, “ไม่มี” |
+| 2 | ดี | คำชมทั่วไป |
+| 3 | เข้าใจ | Positive keyword |
+| 4 | TA | ตัวแทน feedback ส่วน “ผู้ช่วยสอน” |
+| 5–10 | ยาก, ทำให้, เวลา, แต่, ห้อง, แรง | สะท้อนเรื่องการเรียนรู้และการทดลองจริง |
 
 ---
 
 ### 🧩 Key Insights
-- ⏱️ **Timing** พูดถึงบ่อย และ มักเป็น sentiment ลบ  
-- 📄 **Document** ควรปรับปรุง ความชัดเจน  
-- 🙋‍♂️ **TA** ส่วนใหญ่บวก แต่ TA มีน้อย  
-- 🔌 **Hardware** กลาง-บวก แต่ มีข้อจำกัดเรื่อง อุปกรณ์  
+- ⏱️ **Timing** → พูดถึงมากสุด และมักเป็น feedback เชิงลบ (“เวลาไม่พอ”)  
+- 📄 **Document** → คะแนนต่ำสุด ต้องปรับปรุงความละเอียด  
+- 🙋‍♂️ **TA** → ได้รับ feedback เชิงบวกต่อความช่วยเหลือและคำอธิบาย  
+- 🔌 **Hardware** → กลางถึงบวก แต่มีข้อจำกัดเรื่องจำนวนอุปกรณ์  
+- 💡 **ภาพรวม**: นักศึกษาส่วนใหญ่เข้าใจเนื้อหา แต่ติดปัญหาเวลาและเอกสารประกอบ  
 
 ---
 
-### 📈 Overall Findings
-- 🎯 TA / Teacher → sentiment ดีที่สุด  
-- 📄 Document → lowest score เพราะ ความชัดเจน น้อย  
-- ⏱️ Timing → top negative theme  
-- 🔌 Hardware → กลาง-บวก แต่ ของไม่พอ  
-- ☁️ Word Cloud ยืนยัน “เวลา”, “เข้าใจ”, “ยาก”, “ขอบคุณ” คือ keywords หลัก  
+## 📈 Overall Findings
+- TA / Teacher section มี sentiment สูงสุด (ส่วนใหญ่ชม)  
+- Document & Timing มีคะแนนต่ำสุด  
+- Word Cloud ยืนยันว่า “เวลา”, “ไม่เข้าใจ”, “ขอบคุณ”, “TA” คือคำหลัก  
+- Insight เหมาะต่อการวางแผนปรับปรุง lab เอกสาร และเวลาทดลอง  
 
 ---
 
