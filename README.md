@@ -10,26 +10,26 @@ covering **Data Engineering**, **Data Analysis**, and **Data Science** component
 
 ```
 data/
-├── raw/ # original survey or feedback files
-├── interim/ # cleaned but not yet finalized
-└── processed/ # ready-to-analyze datasets
+├── raw/                 # original survey or feedback files
+├── interim/             # cleaned but not yet finalized
+└── processed/           # ready-to-analyze datasets
 
 db/
-├── schema.sql # table schema
-└── sample_queries.sql # example SQL queries
+├── schema.sql           # table schema
+└── sample_queries.sql   # example SQL queries
 
 notebooks/
-├── 01_extract_clean.ipynb # cleaning and transformation
-├── 02_eda.ipynb # exploration and visualization
-└── 03_advanced_analytics.ipynb # Sentiment + Word Cloud + Insights
+├── 01_extract_clean.ipynb         # cleaning and transformation
+├── 02_eda.ipynb                   # exploration and visualization
+└── 03_advanced_analytics.ipynb    # sentiment + word cloud + insights
 
 src/
-├── anonymize.py # anonymization logic for names and TA references
-├── etl_load.py # ETL pipeline to load data into PostgreSQL
+├── anonymize.py          # anonymization logic for names and TA references
+├── etl_load.py           # ETL pipeline to load data into PostgreSQL
 └── sentiment_analysis.py # keyword or model-based sentiment module
 
 dashboard/
-└── app.py # Streamlit / Plotly dashboard
+└── app.py                # Streamlit / Plotly dashboard
 
 docs/
 ├── data_dictionary.md
@@ -75,23 +75,70 @@ docs/
 
 ---
 
-## 🛡️ Data Ethics
-This dataset has been **fully anonymized** and is used **solely for educational and portfolio purposes**.  
-No personally identifiable information (PII) such as names, emails, or student IDs is included.  
+## 📸 Example Visuals
 
-📄 See: [`docs/ethics_disclaimer.md`](docs/ethics_disclaimer.md)
+| Visualization | Preview |
+|----------------|----------|
+| **📈 Sentiment Distribution by Section** | ![Sentiment Bar Chart](assets/sentiment_bar.JPG) |
+| **☁️ Word Cloud (Thai Feedback)** | ![Word Cloud](assets/wordcloud.png) |
+| **📊 Dashboard Snapshot (Streamlit)** | ![Dashboard](assets/dashboard.JPG) |
 
 ---
 
-## 📈 Example Insights (to be added)
-- Average satisfaction by lab section (time vs difficulty)  
-- Clarity of documentation correlates with neutral sentiments  
-- TA availability affects overall feedback tone  
-- Common phrases: “เวลา”, “doc”, “TA”, “ไม่เข้าใจ”
+## 📊 Day 6 Summary — Advanced Analytics & Insights
+
+### 🧠 Sentiment Analysis (Rule-Based)
+ใช้ชุดคำเชิงบวกและลบในการจำแนกอารมณ์ของ feedback  
+บวก → “เข้าใจ”, “ชอบ”, “ขอบคุณ”, “เยี่ยม”  
+ลบ → “ไม่เข้าใจ”, “ยาก”, “เสียเวลา”, “งง”  
+
+- ส่วนใหญ่ ≈ Neutral  
+- ~25–30 % Positive  
+- ~10–15 % Negative  
+
+---
+
+### 🌤️ Average Sentiment Score by Section
+| Section | Avg Score | ความเห็น |
+|:--|:--:|:--|
+| **TA / Teacher** | สูงสุด | “TA อธิบายดี ช่วยเร็ว” |
+| **Hardware** | ปานกลาง | มีทั้งคำชม และ บ่นว่า “ของไม่พอ” |
+| **Document** | ต่ำสุด | “เอกสารไม่ละเอียด เข้าใจยาก” |
+
+---
+
+### ☁️ Word Cloud Visualization
+**คำยอดนิยม:** “เวลา”, “เข้าใจ”, “ยาก”, “TA”, “Doc”, “ขอบคุณ”, “อุปกรณ์”  
+💬 Feedback เน้นเรื่อง เวลา ความเข้าใจ เอกสาร และ TA  
+
+---
+
+### 🔤 Top 15 Frequent Words
+- บวก: “เข้าใจ”, “ขอบคุณ”, “ดี”, “เยี่ยม”  
+- ลบ: “ไม่เข้าใจ”, “ยาก”, “เสียเวลา”, “น้อย”  
+
+---
+
+### 🧩 Key Insights
+- ⏱️ **Timing** พูดถึงบ่อย และ มักเป็น sentiment ลบ  
+- 📄 **Document** ควรปรับปรุง ความชัดเจน  
+- 🙋‍♂️ **TA** ส่วนใหญ่บวก แต่ TA มีน้อย  
+- 🔌 **Hardware** กลาง-บวก แต่ มีข้อจำกัดเรื่อง อุปกรณ์  
+
+---
+
+### 📈 Overall Findings
+- 🎯 TA / Teacher → sentiment ดีที่สุด  
+- 📄 Document → lowest score เพราะ ความชัดเจน น้อย  
+- ⏱️ Timing → top negative theme  
+- 🔌 Hardware → กลาง-บวก แต่ ของไม่พอ  
+- ☁️ Word Cloud ยืนยัน “เวลา”, “เข้าใจ”, “ยาก”, “ขอบคุณ” คือ keywords หลัก  
 
 ---
 
 ## 👨‍💻 Author
 **Thanayot Chalernpornlert**  
 Computer Engineering Student @ Chulalongkorn University  
-📧 *[thanayot.47@gmail.com]* | 🌐 [github.com/besttny]
+📧 *thanayot.47@gmail.com* | 🌐 [github.com/besttny](https://github.com/besttny)
+
+---
