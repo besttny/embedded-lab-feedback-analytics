@@ -18,7 +18,11 @@ assets/ # picture assets
 ├── mostfreqword.png  
 ├── sentimentdistribution.png 
 ├── top15word.png         
-└── wordcloud.png        
+└── wordcloud.png 
+
+models/ # ML 
+├── sentiment_nb.pkl        
+└── tfidf_vectorizer.pkl 
 
 data/
 ├── raw/ # original survey or feedback files
