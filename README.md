@@ -112,10 +112,10 @@ This dataset has been **fully anonymized** and is used **solely for educational 
 ### 🌤️ Average Sentiment Score by Section
 | Section | Avg Sentiment | ความเห็นสรุป |
 |:--|:--:|:--|
-| **Document** | ~-0.20 | “เอกสารไม่ละเอียด เข้าใจยาก” |
-| **Hardware** | ~-0.20 | มีทั้งบวกและลบ เช่น “อุปกรณ์ไม่พอ” |
-| **TA / Teacher** | ~-0.20 | มีคำชมว่า “ช่วยดี / อธิบายเข้าใจ” แต่ก็มีคำติชมบ้าง |
-| **Timing** | ~-0.4 | “เวลาไม่พอ / ทันน้อย” |
+| **Document** | ~-0.20 | เอกสารไม่ละเอียด เข้าใจยาก มีปัญหาเรื่องภาษา |
+| **Hardware** | ~-0.20 | มีทั้งบวกและลบ เช่น อุปกรณ์ไม่พอ |
+| **TA / Teacher** | ~-0.20 | มีคำติเยอะเช่น ไม่ช่วยเหลือ แต่ก็มีคำชมบ้าง เช่น ช่วยดี / อธิบายเข้าใจ |
+| **Timing** | ~-0.4 | เวลาไม่พอ / คนทำทันน้อย |
 | **Other** | ~-0.45 | รวม feedback ทั่วไป เช่น lab หนัก / ยาก |
 
 📊 **Average Sentiment Score by Section**
@@ -124,7 +124,7 @@ This dataset has been **fully anonymized** and is used **solely for educational 
 ---
 
 ### ☁️ Word Cloud & Top Words
-**คำยอดนิยม:** “ไม่”, “ยาก”, “TA”, “ทำให้”, “เวลา”, “เข้าใจ”, “ดี”, “ขอบคุณ”
+**คำยอดนิยม:** “ไม่”, “แต่”, “TA”, “อยากให้”, “เวลา”, “ไม่ละเอียด”
 
 🌥️ **Word Cloud**
 ![wordcloud](./assets/wordcloud.png)
@@ -136,8 +136,8 @@ This dataset has been **fully anonymized** and is used **solely for educational 
 
 ### 🧩 Key Insights
 - ⏱️ **Timing** → พูดถึงมากสุด และมักเป็น feedback เชิงลบ (“เวลาไม่พอ”)  
-- 📄 **Document** → คะแนนต่ำสุด ต้องปรับปรุงความละเอียด  
-- 🙋‍♂️ **TA** → ได้รับ feedback เชิงบวกต่อความช่วยเหลือและคำอธิบาย  
+- 📄 **Document** → คะแนนลบต่ำสุด แต่ต้องปรับปรุงความละเอียด  
+- 🙋‍♂️ **TA** → ได้รับ feedback ทั้งเชิงบวกและลบ
 - 🔌 **Hardware** → กลางถึงบวก แต่มีข้อจำกัดเรื่องจำนวนอุปกรณ์  
 - 💡 **ภาพรวม**: นักศึกษาส่วนใหญ่เข้าใจเนื้อหา แต่ติดปัญหาเวลาและเอกสารประกอบ  
 
